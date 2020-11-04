@@ -4,7 +4,8 @@
         <form action="game">
             <mat-form-field class="example-form-field">
                 <mat-label>Enter your user name</mat-label>
-                <input matInput type="text" [value]="username">
+                <!-- <input matInput [value]="username" required> -->
+                <input matInput name="username" pattern="^[\w\d]+$" required>
                 <button mat-button (click)="login(username)">
                     Submit
                 </button>

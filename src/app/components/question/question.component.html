@@ -1,1 +1,9 @@
 <p>question works!</p>
+<div class="question">{{questionItem.question}}</div>
+<div *ngFor="let answer of questionItem.answers; let i = index" class="answer ans-{{i+1}}">
+    {{answer.f}}
+</div>
+
+<button mat-button (click)="skip()">
+    Skip
+</button>
