@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TQuestion } from '../../models/questions.model';
+import { TAnswer, TQuestion } from '../../models/questions.model';
 import { QuestionsService } from '../../services/questions.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { QuestionsService } from '../../services/questions.service';
 })
 export class QuestionComponent implements OnInit {
     public questionItem: TQuestion;
+    public ttt;
     constructor(private questionsService: QuestionsService) { }
 
     ngOnInit() {
@@ -23,6 +24,10 @@ export class QuestionComponent implements OnInit {
         
     }
     
+    public checkAnswer(answer: TAnswer) {
+        const isAnswer = this.questionsService.checkAnswer(answer);
+    }
+
     public skip() {
         this.questionsService.getNextQuestion();
         this.questionItem = this.questionsService.getCurrentQuestion();

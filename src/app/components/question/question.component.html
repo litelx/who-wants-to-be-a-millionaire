@@ -1,8 +1,22 @@
 <p>question works!</p>
 <div class="question">{{questionItem.question}}</div>
-<div *ngFor="let answer of questionItem.answers; let i = index" class="answer ans-{{i+1}}">
+<div *ngFor="let answer of questionItem.answers; let i = index" 
+    class="answer ans-{{i+1}}"
+    (click)="checkAnswer(answer)">
     {{answer.f}}
 </div>
+
+<mat-radio-group
+  aria-labelledby="example-radio-group-label"
+  class="example-radio-group"
+  [(ngModel)]="ttt">
+  <mat-radio-button *ngFor="let answer of questionItem.answers; let i = index" 
+    class="answer ans-{{i+1}}" 
+    [value]="answer">
+    {{answer}}
+  </mat-radio-button>
+</mat-radio-group>
+
 
 <button mat-button (click)="skip()">
     Skip
