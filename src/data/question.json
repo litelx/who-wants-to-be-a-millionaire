@@ -1,0 +1,172 @@
+[
+    {
+        "q": "What is the sea color?",
+        "as": [
+            {
+                "a": "Yellow"
+            },
+            {
+                "a": "Green"
+            },
+            {
+                "a": "Black"
+            },
+            {
+                "v": "Blue"
+            }
+        ]
+    },
+    {
+        "q": "What is the sky color?",
+        "as": [
+            {
+                "a": "As clouds"
+            },
+            {
+                "a": "As sun"
+            },
+            {
+                "v": "As sea"
+            },
+            {
+                "a": "As a leaf"
+            }
+        ]
+    },
+    {
+        "q": "What country has no border with Germany?",
+        "as": [
+            {
+                "v": "France"
+            },
+            {
+                "a": "Poland"
+            },
+            {
+                "a": "The netherlands"
+            },
+            {
+                "a": "switzerland"
+            }
+        ]
+    },
+    {
+        "q": "Who is longer?",
+        "as": [
+            {
+                "v": "Snake"
+            },
+            {
+                "a": "Dog"
+            },
+            {
+                "a": "Mouse"
+            },
+            {
+                "a": "Bat"
+            }
+        ]
+    },
+    {
+        "q": "Where is Andora?",
+        "as": [
+            {
+                "v": "Between France and Spain"
+            },
+            {
+                "a": "North Africa"
+            },
+            {
+                "a": "Border with Argentina"
+            },
+            {
+                "a": "Border with China"
+            }
+        ]
+    },
+    {
+        "q": "What is the sea color?",
+        "as": [
+            {
+                "a": "Yellow"
+            },
+            {
+                "a": "Green"
+            },
+            {
+                "a": "Black"
+            },
+            {
+                "v": "Blue"
+            }
+        ]
+    },
+    {
+        "q": "What is the sky color?",
+        "as": [
+            {
+                "a": "As clouds"
+            },
+            {
+                "a": "As sun"
+            },
+            {
+                "v": "As sea"
+            },
+            {
+                "a": "As a leaf"
+            }
+        ]
+    },
+    {
+        "q": "What country has no border with Germany?",
+        "as": [
+            {
+                "v": "France"
+            },
+            {
+                "a": "Poland"
+            },
+            {
+                "a": "The netherlands"
+            },
+            {
+                "a": "switzerland"
+            }
+        ]
+    },
+    {
+        "q": "Who is longer?",
+        "as": [
+            {
+                "v": "Snake"
+            },
+            {
+                "a": "Dog"
+            },
+            {
+                "a": "Mouse"
+            },
+            {
+                "a": "Bat"
+            }
+        ]
+    },
+    {
+        "q": "Where is Andora?",
+        "as": [
+            {
+                "v": "Between France and Spain"
+            },
+            {
+                "a": "North Africa"
+            },
+            {
+                "a": "Border with Argentina"
+            },
+            {
+                "a": "Border with China"
+            }
+        ]
+    }
+]

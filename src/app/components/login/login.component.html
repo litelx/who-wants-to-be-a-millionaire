@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-header>Please login</mat-card-header>
+    <mat-card-content>
+        <form action="game">
+            <mat-form-field class="example-form-field">
+                <mat-label>Enter your user name</mat-label>
+                <input matInput type="text" [value]="username">
+                <button mat-button (click)="login(username)">
+                    Submit
+                </button>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+</mat-card>
