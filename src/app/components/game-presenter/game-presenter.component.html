@@ -1,8 +1,8 @@
 <mat-toolbar>
-    <span>Who whats to be a millonaire?</span>
+    <span>Who Whats To Be A Millonaire?</span>
 </mat-toolbar>
 
-<mat-card>
+<mat-card *ngIf="state$ | async as store">
     <mat-card-content>
         <mat-horizontal-stepper linear #stepper>
             <mat-step editable="false" *ngFor="let q of questionaireItems; let i = index">
@@ -20,11 +20,11 @@
         </mat-horizontal-stepper>
         <div class="status">
             <div class="status-wrapper">
-                <div>Username: {{state.username}}</div>
-                <div>Wrong Steps: {{state.wrong_steps.length}}</div>
-                <div>Correct Steps: {{state.correct_steps.length}}</div>
-                <div>Score: {{state.score}}</div>
-                <div>Available Skips: {{state.availableSkips}}</div>
+                <div>Username: {{store.username}}</div>
+                <div>Wrong Steps: {{store.wrong_steps.length}}</div>
+                <div>Correct Steps: {{store.correct_steps.length}}</div>
+                <div>Score: {{store.score}}</div>
+                <div>Available Skips: {{store.availableSkips}}</div>
             </div>
             <div class="timer-wrapper">
                 <mat-progress-spinner class="spinner" [color]="color" [mode]="'determinate'" [value]="value">

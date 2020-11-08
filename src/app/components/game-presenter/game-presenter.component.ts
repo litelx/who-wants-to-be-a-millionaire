@@ -24,7 +24,6 @@ export class GamePreserterComponent implements OnInit, OnDestroy {
     public color: string = 'primary';
     public value: number = (this.timer / timerTime) * 100;
     public state$: Observable<IQuestionaireState>;
-    public state: IQuestionaireState;
     public isNextEnable = false;
     private unsibscribe$ = new Subject<void>();
 
@@ -33,14 +32,10 @@ export class GamePreserterComponent implements OnInit, OnDestroy {
     constructor(private questionsService: QuestionsService,
         private router: Router,
         private stateStore: Store<{ questionaire: IQuestionaireState }>) {
-        this.state$ = stateStore.select('questionaire');
-
+        this.state$ = this.stateStore.select(selectors.getState);
     }
 
     ngOnInit() {
-        this.state$.subscribe(o => {
-            this.state = o;
-        })
         this.questionsService.getQuestionsList();
         if (!selectors.getUser) {
             this.router.navigate(['leaderboard']);
