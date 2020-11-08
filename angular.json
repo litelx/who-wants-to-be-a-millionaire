@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "i-am-a-millionaire"
+  "defaultProject": "i-am-a-millionaire",
+  "cli": {
+    "analytics": false
+  }
 }

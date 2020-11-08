@@ -1,0 +1,36 @@
+<mat-toolbar>
+    <span>Who whats to be a millonaire?</span>
+</mat-toolbar>
+
+<mat-card>
+    <mat-card-content>
+        <mat-horizontal-stepper linear #stepper>
+            <mat-step editable="false" [stepControl]="i" *ngFor="let q of questionaireItems; let i = index">
+                <question-presenter [questionIndex]="i" [questionaireItem]="q" (chosenAnswer)="chosenAnswer($event)">
+                </question-presenter>
+                <div class="btn-section">
+                    <button mat-button matStepperNext [disabled]="!isNextEnable" (click)="nextStep()">
+                        Next
+                    </button>
+                    <button mat-button matStepperNext [disabled]="isNextEnable" (click)="skip(q)">
+                        Skip
+                    </button>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+        <div class="status">
+            <div class="status-wrapper">
+                <div>Username: {{state.username}}</div>
+                <div>Wrong Steps: {{state.wrong_steps.length}}</div>
+                <div>Correct Steps: {{state.correct_steps.length}}</div>
+                <div>Score: {{state.score}}</div>
+                <div>Available Skips: {{state.availableSkips}}</div>
+            </div>
+            <div class="timer-wrapper">
+                <mat-progress-spinner class="spinner" [color]="color" [mode]="'determinate'" [value]="value">
+                </mat-progress-spinner>
+                <div class="timer">{{timer}}</div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

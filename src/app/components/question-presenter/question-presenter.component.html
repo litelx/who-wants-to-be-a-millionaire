@@ -1,0 +1,19 @@
+<div>
+    <div class="question">{{questionaireItem.question}}</div>
+    <mat-button-toggle-group class="answers-wrapper" [(ngModel)]="value">
+        <mat-button-toggle *ngFor="let answer of questionaireItem.answers; let i = index" class="answer ans-{{i}}"
+            [ngClass]="{'correct-answer': trueAnswerIndex==i && isCheckedAnswer,
+            'incorrect-answer': trueAnswerIndex!=i && isCheckedAnswer}"
+            [disabled]="isCheckedAnswer"
+            [value]="answer">
+            <div class="q-btn">
+                <img *ngIf="answer==value && isCheckedAnswer" src="../../../assets/img/{{isCorrect}}.png" alt="{{isCorrect}}">
+                <div>{{answer}}</div>
+            </div>
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+
+    <button mat-flat-button color="warn" (click)="checkAnswer()" [disabled]="!value" class="btn">
+        OK
+    </button>
+</div>

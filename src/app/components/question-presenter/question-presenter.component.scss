@@ -1,0 +1,41 @@
+.question {
+    display: flex;
+    justify-content: center;
+}
+
+.answers-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    border: 0;
+}
+
+.answer {
+    width: 45%;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 5px auto;
+}
+.q-btn {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    img {
+        height: 30px;
+        margin-right: 20px;
+        align-self: center;
+    }
+}
+
+.btn {
+    margin: auto;
+    width: 40%;
+    border-radius: 25px;
+    background-color: #ff8f48;
+    display: flex;
+    justify-content: center;
+    :hover {
+        background-color: #f68034;
+    }
+}
+
+

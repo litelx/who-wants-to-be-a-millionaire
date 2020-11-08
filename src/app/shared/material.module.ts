@@ -8,6 +8,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
     exports: [
@@ -18,6 +21,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
         MatInputModule,
         MatButtonModule,
         MatProgressSpinnerModule,
+        MatFormFieldModule,
+        MatButtonToggleModule,
+        MatStepperModule,
         MatToolbarModule
     ]
 })
