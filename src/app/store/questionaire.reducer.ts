@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import { createReducer, on, Action } from '@ngrx/store';
-import { scorePoints, skip } from 'src/data/configs';
+import { scorePoints, skip } from '../../data/configs';
 import { TLeaderBoard, TQuestionaireItem, TUser } from '../models/questionaire.model';
 import * as actions from './questionaire.actions';
 

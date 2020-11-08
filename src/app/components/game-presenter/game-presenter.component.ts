@@ -1,15 +1,14 @@
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatStepper } from '@angular/material/stepper';
 import { Store } from '@ngrx/store';
 
-import { TQuestionaireItem } from 'src/app/models/questionaire.model';
-import { QuestionsService } from 'src/app/services/questionaire.service';
-import { IQuestionaireState } from 'src/app/store/questionaire.reducer';
-import * as selectors from 'src/app/store/questionaire.selector';
+import { TQuestionaireItem } from '../../models/questionaire.model';
+import { QuestionsService } from '../../services/questionaire.service';
+import { IQuestionaireState } from '../../store/questionaire.reducer';
+import * as selectors from '../../store/questionaire.selector';
 import { timerTime } from '../../../data/configs';
 import * as actions from '../../store/questionaire.actions';
 
@@ -26,14 +25,12 @@ export class GamePreserterComponent implements OnInit, OnDestroy {
     public value: number = (this.timer / timerTime) * 100;
     public state$: Observable<IQuestionaireState>;
     public state: IQuestionaireState;
-    public firstFormGroup: FormGroup;
     public isNextEnable = false;
     private unsibscribe$ = new Subject<void>();
 
     @ViewChild('stepper') private stepper: MatStepper
 
     constructor(private questionsService: QuestionsService,
-        private formBuilder: FormBuilder,
         private router: Router,
         private stateStore: Store<{ questionaire: IQuestionaireState }>) {
         this.state$ = stateStore.select('questionaire');
@@ -44,9 +41,6 @@ export class GamePreserterComponent implements OnInit, OnDestroy {
         this.state$.subscribe(o => {
             this.state = o;
         })
-        this.firstFormGroup = this.formBuilder.group({
-            firstCtrl: ['', Validators.required]
-        });
         this.questionsService.getQuestionsList();
         if (!selectors.getUser) {
             this.router.navigate(['leaderboard']);

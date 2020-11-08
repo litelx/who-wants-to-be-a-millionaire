@@ -5,7 +5,7 @@
 <mat-card>
     <mat-card-content>
         <mat-horizontal-stepper linear #stepper>
-            <mat-step editable="false" [stepControl]="i" *ngFor="let q of questionaireItems; let i = index">
+            <mat-step editable="false" *ngFor="let q of questionaireItems; let i = index">
                 <question-presenter [questionIndex]="i" [questionaireItem]="q" (chosenAnswer)="chosenAnswer($event)">
                 </question-presenter>
                 <div class="btn-section">
