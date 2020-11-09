@@ -27,9 +27,9 @@
                 <div>Available Skips: {{store.availableSkips}}</div>
             </div>
             <div class="timer-wrapper">
-                <mat-progress-spinner class="spinner" [color]="color" [mode]="'determinate'" [value]="value">
+                <mat-progress-spinner class="spinner" [color]="timer.color" [mode]="'determinate'" [value]="timer.value">
                 </mat-progress-spinner>
-                <div class="timer">{{timer}}</div>
+                <div class="timer">{{timer.timer}}</div>
             </div>
         </div>
     </mat-card-content>

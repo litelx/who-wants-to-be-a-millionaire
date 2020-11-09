@@ -1,0 +1,46 @@
+.mat-card {
+    margin: 20px;
+    height: 50%;
+}
+.mat-form-field-underline {
+    display: none;
+}
+.mat-button-toggle-group-appearance-standard .mat-button-toggle + .mat-button-toggle {
+    border: 2px solid black;
+    // border-color: blue;
+}
+
+.mat-button-toggle-checked {
+    &.answer {
+        border: 2px solid #0d7bab !important;
+        color: #0d7bab;
+        background-color: whitesmoke;
+        &.correct-answer {
+            border: 2px solid #33c933 !important;
+            color: #33c933;
+        }
+        &.incorrect-answer {
+            border: 2px solid #fb4343 !important;
+            color: #fb4343;
+        }
+    }
+}
+.mat-horizontal-stepper-header {
+    pointer-events: none !important;
+}
+
+.mat-step-icon-content {
+    mat-icon {
+        display: none;
+    }
+    span {
+        display: none;
+    }
+}
+:not(.mat-button-disabled) {
+    &.btn {
+        &:hover {
+            background-color: #f68034;
+        }
+    }
+}

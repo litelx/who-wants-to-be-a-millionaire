@@ -20,11 +20,10 @@ import * as actions from '../../store/questionaire.actions';
 export class GamePreserterComponent implements OnInit, OnDestroy {
     public questionaireItem: TQuestionaireItem;
     public questionaireItems: TQuestionaireItem[];
-    public timer: number = 0;
-    public color: string = 'primary';
-    public value: number = (this.timer / timerTime) * 100;
+    public timer: {timer: number, color: string, value: number};
     public state$: Observable<IQuestionaireState>;
     public isNextEnable = false;
+    public timerRef;
     private unsibscribe$ = new Subject<void>();
 
     @ViewChild('stepper') private stepper: MatStepper
@@ -41,6 +40,15 @@ export class GamePreserterComponent implements OnInit, OnDestroy {
             this.router.navigate(['leaderboard']);
         }
         this.setQuestion();
+        this.createTimer();
+    }
+
+    private createTimer() {
+        this.timer = {
+            timer: 0,
+            color: 'primary',
+            value: (0 / timerTime) * 100
+        },
         this.initTime();
         this.startTimer();
     }
@@ -107,6 +115,7 @@ export class GamePreserterComponent implements OnInit, OnDestroy {
     }
 
     private gameOver() {
+        clearTimeout(this.timerRef)
         setTimeout(() => {
             this.stateStore.dispatch(actions.AddLeaderBoard());
             this.router.navigate(['leaderboard']);
@@ -114,23 +123,23 @@ export class GamePreserterComponent implements OnInit, OnDestroy {
     }
 
     public initTime() {
-        this.timer = timerTime;
+        this.timer.timer = timerTime;
     }
 
     public decreaseTime() {
-        if (this.timer < 1) return;
-        this.timer--;
-        this.value = (this.timer / timerTime) * 100;
-        if (this.timer < 6) {
-            this.color = 'warn';
+        if (this.timer.timer < 1) return;
+        this.timer.timer--;
+        this.timer.value = (this.timer.timer / timerTime) * 100;
+        if (this.timer.timer < 6) {
+            this.timer.color = 'warn';
         };
     }
 
     private startTimer() {
-        setTimeout(() => {
+        this.timerRef = setTimeout(() => {
             this.decreaseTime();
-            if (this.timer < 1) {
-                this.color = 'primary';
+            if (this.timer.timer < 1) {
+                this.timer.color = 'primary';
                 if (this.isNextEnable) {
                     this.nextStep();
                     this.stepper.next()
