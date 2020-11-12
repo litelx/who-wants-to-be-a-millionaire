@@ -7,6 +7,8 @@
     display: flex;
     flex-wrap: wrap;
     border: 0;
+    max-width: 500px;
+    margin: auto;
 }
 
 .answer {
@@ -14,11 +16,13 @@
     border: 2px solid black;
     border-radius: 5px;
     margin: 5px auto;
+    max-width: 200px;
 }
 .q-btn {
     display: flex;
     flex-direction: row;
     height: 100%;
+    max-width: 240px;
     img {
         height: 30px;
         margin-right: 20px;
@@ -33,6 +37,7 @@
     background-color: #ff8f48;
     display: flex;
     justify-content: center;
+    max-width: 180px;
 }
 
 

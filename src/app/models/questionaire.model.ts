@@ -21,3 +21,9 @@ export type TLeaderBoard = {
     date: number;
     score: number;
 }
+
+export enum EStatusPage {
+    Login,
+    Game,
+    Leaderboard
+}

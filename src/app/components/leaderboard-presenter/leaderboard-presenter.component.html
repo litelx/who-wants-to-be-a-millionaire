@@ -1,34 +1,27 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>
-            Leaderboard
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <div class="row title">
-            <div class="col">
-                Username
-            </div>
-            <div class="col">
-                Score
-            </div>
-            <div class="col">
-                Date
-            </div>
+<div class="table">
+    <div class="row title">
+        <div class="col">
+            Username
         </div>
-        <div *ngFor="let user of leaderBoardList" class="row">
-            <div class="col">
-                {{user.username}}
-            </div>
-            <div class="col">
-                {{user.score}}
-            </div>
-            <div class="col">
-                {{user.date | date:'medium'}}
-            </div>
+        <div class="col">
+            Score
         </div>
-    </mat-card-content>
-        <button mat-button (click)="restartGame()" class="btn">
-            New Game
-        </button>
-</mat-card>
+        <div class="col">
+            Date
+        </div>
+    </div>
+    <div *ngFor="let user of leaderBoardList" class="row">
+        <div class="col">
+            {{user.username}}
+        </div>
+        <div class="col">
+            {{user.score}}
+        </div>
+        <div class="col">
+            {{user.date | date:'medium'}}
+        </div>
+    </div>
+</div>
+<button mat-button (click)="restartGame()" class="btn-game">
+    New Game
+</button>

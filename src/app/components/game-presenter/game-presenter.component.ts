@@ -1,11 +1,10 @@
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { MatStepper } from '@angular/material/stepper';
 import { Store } from '@ngrx/store';
 
-import { TQuestionaireItem } from '../../models/questionaire.model';
+import { EStatusPage, TQuestionaireItem } from '../../models/questionaire.model';
 import { QuestionsService } from '../../services/questionaire.service';
 import { IQuestionaireState } from '../../store/questionaire.reducer';
 import * as selectors from '../../store/questionaire.selector';
@@ -20,27 +19,33 @@ import * as actions from '../../store/questionaire.actions';
 export class GamePreserterComponent implements OnInit, OnDestroy {
     public questionaireItem: TQuestionaireItem;
     public questionaireItems: TQuestionaireItem[];
-    public timer: {timer: number, color: string, value: number};
+    public timer: { timer: number, color: string, value: number };
     public state$: Observable<IQuestionaireState>;
     public isNextEnable = false;
     public timerRef;
+    public page: EStatusPage;
+    public pageItem = EStatusPage;
     private unsibscribe$ = new Subject<void>();
 
     @ViewChild('stepper') private stepper: MatStepper
 
     constructor(private questionsService: QuestionsService,
-        private router: Router,
         private stateStore: Store<{ questionaire: IQuestionaireState }>) {
         this.state$ = this.stateStore.select(selectors.getState);
     }
 
     ngOnInit() {
+        this.setPage(EStatusPage.Login)
         this.questionsService.getQuestionsList();
         if (!selectors.getUser) {
-            this.router.navigate(['leaderboard']);
+            this.setPage(EStatusPage.Login)
         }
         this.setQuestion();
         this.createTimer();
+    }
+
+    public setPage(page: EStatusPage) {
+        this.page = page;
     }
 
     private createTimer() {
@@ -49,7 +54,7 @@ export class GamePreserterComponent implements OnInit, OnDestroy {
             color: 'primary',
             value: (0 / timerTime) * 100
         },
-        this.initTime();
+            this.initTime();
         this.startTimer();
     }
 
@@ -62,15 +67,8 @@ export class GamePreserterComponent implements OnInit, OnDestroy {
         this.stateStore.select(selectors.getQuestions)
             .pipe(takeUntil(this.unsibscribe$))
             .subscribe(observer => {
-                this.questionaireItems = [...observer];
-            });
-        this.stateStore.select(selectors.getCurrentQuestion)
-            .pipe(takeUntil(this.unsibscribe$))
-            .subscribe(observer => {
-                if (observer) {
-                    this.questionaireItem = observer;
-                } else {
-                    this.gameOver();
+                if (observer.length) {
+                    this.questionaireItems = [...observer];
                 }
             });
     }
@@ -116,10 +114,8 @@ export class GamePreserterComponent implements OnInit, OnDestroy {
 
     private gameOver() {
         clearTimeout(this.timerRef)
-        setTimeout(() => {
-            this.stateStore.dispatch(actions.AddLeaderBoard());
-            this.router.navigate(['leaderboard']);
-        }, 2000)
+        this.stateStore.dispatch(actions.AddLeaderBoard());
+        this.setPage(EStatusPage.Leaderboard);
     }
 
     public initTime() {

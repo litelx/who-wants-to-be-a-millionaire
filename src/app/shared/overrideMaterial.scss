@@ -2,12 +2,20 @@
     margin: 20px;
     height: 50%;
 }
+
+.mat-card-header-text {
+    width: 100%;
+}
+.mat-card-title {
+    display: flex;
+    justify-content: center;
+}
+
 .mat-form-field-underline {
     display: none;
 }
 .mat-button-toggle-group-appearance-standard .mat-button-toggle + .mat-button-toggle {
     border: 2px solid black;
-    // border-color: blue;
 }
 
 .mat-button-toggle-checked {
@@ -42,5 +50,24 @@
         &:hover {
             background-color: #f68034;
         }
+    }
+}
+.mat-stepper-horizontal-line {
+    display: none;
+}
+.mat-horizontal-stepper-header-container {
+    justify-content: center;
+}
+.mat-stepper-horizontal {
+    display: flex !important;
+    flex-direction: column-reverse;
+}
+.mat-step-header {
+    &.mat-horizontal-stepper-header {
+        padding: 0;
+    }
+    .mat-step-icon {
+        height: 14px;
+        width: 14px;
     }
 }
