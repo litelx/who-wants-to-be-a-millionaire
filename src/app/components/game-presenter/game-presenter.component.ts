@@ -22,7 +22,6 @@ export class GamePreserterComponent implements OnInit, OnDestroy {
     public timer: { timer: number, color: string, value: number };
     public state$: Observable<IQuestionaireState>;
     public isNextEnable = false;
-    public timerRef;
     public page: EStatusPage;
     public pageItem = EStatusPage;
     private unsibscribe$ = new Subject<void>();
@@ -53,8 +52,8 @@ export class GamePreserterComponent implements OnInit, OnDestroy {
             timer: 0,
             color: 'primary',
             value: (0 / timerTime) * 100
-        },
-            this.initTime();
+        };
+        this.initTime();
         this.startTimer();
     }
 
@@ -86,7 +85,6 @@ export class GamePreserterComponent implements OnInit, OnDestroy {
             .subscribe(o => { skips = o });
         if (skips > 0) {
             this.stateStore.dispatch(actions.UpdateAvailableSkips());
-            this.initTime();
         } else {
             this.gameOver();
         }
@@ -113,7 +111,7 @@ export class GamePreserterComponent implements OnInit, OnDestroy {
     }
 
     private gameOver() {
-        clearTimeout(this.timerRef)
+        // clearTimeout(this.timerRef)
         this.stateStore.dispatch(actions.AddLeaderBoard());
         this.setPage(EStatusPage.Leaderboard);
     }
@@ -123,6 +121,7 @@ export class GamePreserterComponent implements OnInit, OnDestroy {
     }
 
     public decreaseTime() {
+        if (this.isNextEnable) return;
         if (this.timer.timer < 1) return;
         this.timer.timer--;
         this.timer.value = (this.timer.timer / timerTime) * 100;
@@ -132,7 +131,7 @@ export class GamePreserterComponent implements OnInit, OnDestroy {
     }
 
     private startTimer() {
-        this.timerRef = setTimeout(() => {
+        setTimeout(() => {
             this.decreaseTime();
             if (this.timer.timer < 1) {
                 this.timer.color = 'primary';
