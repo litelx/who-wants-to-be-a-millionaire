@@ -6,12 +6,8 @@ import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GamePreserterComponent } from './components/game-presenter/game-presenter.component';
-import { QuestionPresenterComponent } from './components/question-presenter/question-presenter.component';
 import { MaterialsModule } from './shared/material.module';
-import { LoginComponent } from './components/login/login.component';
 import { reducer } from './store/questionaire.reducer';
-import { LeaderboardPresenterComponent } from './components/leaderboard-presenter/leaderboard-presenter.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserModule } from './components/user/user.module';
 import { LoginModule } from './components/login/login.module';
@@ -23,10 +19,6 @@ import { DepartmentModule } from './components/department/department.module';
 @NgModule({
     declarations: [
         AppComponent,
-        GamePreserterComponent,
-        QuestionPresenterComponent,
-        LoginComponent,
-        LeaderboardPresenterComponent
     ],
     imports: [
         MaterialsModule,

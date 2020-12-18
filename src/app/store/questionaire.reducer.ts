@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import { createReducer, on, Action } from '@ngrx/store';
-import { scorePoints, skip } from '../../data/configs';
+// import { scorePoints, skip } from '../../data/configs';
 import { TLeaderBoard, TQuestionaireItem, TUser } from '../models/questionaire.model';
 import * as actions from './questionaire.actions';
 
@@ -24,7 +24,7 @@ export const initialState: IQuestionaireState = {
     wrong_steps: [],
     correct_steps: [],
     score: 0,
-    availableSkips: skip,
+    availableSkips: 3,
     username: undefined,
     questionaireProgressPosition: 0,
     leaderBoard: []
@@ -35,7 +35,7 @@ const questionaireReducers = createReducer(
     initialState,
     on(actions.SetQuestionAction, (state, action) => ({ ...state, questionsList: action.questionsList })),
     on(actions.UpdateNextStep, state => ({ ...state, questionaireProgressPosition: 1 + state.questionaireProgressPosition })),
-    on(actions.UpdateScore, state => ({ ...state, score: state.score + scorePoints })),
+    on(actions.UpdateScore, state => ({ ...state, score: state.score + 10 })),
     on(actions.InitGame, state => ({ ...initialState, leaderBoard: state.leaderBoard })),
     on(actions.AddUser, (state, action) => {
         return { ...state, username: action.username }
