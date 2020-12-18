@@ -1,0 +1,45 @@
+<p>user-add works!</p>
+<div class="form-container">
+    <form [formGroup]="addUserForm" (ngSubmit)="addUser()" class="form">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Enter your ID</mat-label>
+            <input matInput type="number" [formControl]="id" required>
+            <mat-hint *ngIf="id.errors?.pattern" class="hint">User id not valid.</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Enter your email</mat-label>
+            <input matInput type="email" [formControl]="email" required>
+            <mat-hint *ngIf="email.errors?.pattern" class="hint">User email not valid.</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Enter your password</mat-label>
+            <input matInput type="password" [formControl]="password" required>
+            <mat-hint *ngIf="password.errors?.pattern" class="hint">User password not valid.</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Enter your first name</mat-label>
+            <input matInput type="text" [formControl]="firstName">
+            <mat-hint *ngIf="firstName.errors?.pattern" class="hint">User first name not valid.</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Enter your last name</mat-label>
+            <input matInput type="text" [formControl]="lastName">
+            <mat-hint *ngIf="lastName.errors?.pattern" class="hint">User last name not valid.</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Enter your address</mat-label>
+            <input matInput placeholder="'address'" [formControl]="address">
+            <mat-hint *ngIf="address.errors?.pattern">User address not valid.</mat-hint>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" mat-button class="submit-btn">
+            Submit
+        </button>
+    </form>
+</div>

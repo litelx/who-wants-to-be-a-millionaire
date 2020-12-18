@@ -12,7 +12,7 @@ import { IQuestionaireState } from '../../store/questionaire.reducer';
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    @Output() page: EventEmitter<EStatusPage> = new EventEmitter<EStatusPage>() ;
+    @Output() page: EventEmitter<EStatusPage> = new EventEmitter<EStatusPage>();
     public loginForm: FormGroup;
 
     constructor(private formBuilder: FormBuilder,
